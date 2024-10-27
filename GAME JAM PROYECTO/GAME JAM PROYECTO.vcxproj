@@ -127,8 +127,10 @@
     <ClCompile Include="Carro3.cpp" />
     <ClCompile Include="FrmCarrera.cpp" />
     <ClCompile Include="FrmGenerar.cpp" />
+    <ClCompile Include="FrmInicio.cpp" />
     <ClCompile Include="FrmIntegrantes.cpp" />
     <ClCompile Include="FrmMain.cpp" />
+    <ClCompile Include="GenerarCarros.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Carrera.h" />
@@ -142,12 +144,16 @@
     <ClInclude Include="FrmGenerar.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="FrmInicio.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FrmIntegrantes.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FrmMain.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="GenerarCarros.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmCarrera.resx">
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGenerar.resx">
       <DependentUpon>FrmGenerar.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInicio.resx">
+      <DependentUpon>FrmInicio.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.h</DependentUpon>

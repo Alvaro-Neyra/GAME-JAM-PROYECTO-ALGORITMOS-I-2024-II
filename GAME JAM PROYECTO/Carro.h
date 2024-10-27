@@ -15,6 +15,8 @@ protected:
 	int dy;
 	int puntos;
 	int tipo;
+	bool colisionReciente;
+	bool colisionAnterior;
 public:
 	int carroGanador;
 	Carro(int x, int y, int tipo);
@@ -26,6 +28,7 @@ public:
 	void generarDerivados();
 	void generarVelocidadDerivada();
 	void cambiarDireccionEnLimites(int panelAncho, int panelAlto);
+	void invertirDireccion();
 	int getX();
 	int getY();
 	int getDx();
@@ -36,6 +39,11 @@ public:
 	int obtenerPuntos();
 	void setDx(int dx);
 	void setDy(int dy);
+	void marcarColision();
+	void resetearColision();
+	bool estaEnColision();
+	bool estabaEnColision();
+	void actualizarEstadoDeColision();
 	Rectangle getRectangle();
 	virtual void mostrar(Graphics^ panel);
 };

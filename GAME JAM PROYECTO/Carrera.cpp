@@ -1,7 +1,7 @@
 #include "Carrera.h"
 
 Carrera::Carrera(int xCarro1, int yCarro1, int xCarro2, int yCarro2, int xCarro3, int yCarro3) {
-	xLineaFinal = 5;
+	xLineaFinal = 1100;
 	terminarCarrera = false;
 	carros.push_back(new Carro1(xCarro1, yCarro1, 1));
 	carros.push_back(new Carro2(xCarro2, yCarro2, 1));
@@ -73,7 +73,7 @@ void Carrera::mostrar(Graphics^ panel) {
 			establecerTerminarCarrera(true);
 			carroGanador = i;
 			for (size_t i = 0; i < carros.size(); i++) {
-				carros[i]->setX(1050);
+				carros[i]->setX(20);
 			}
 		}
 	}

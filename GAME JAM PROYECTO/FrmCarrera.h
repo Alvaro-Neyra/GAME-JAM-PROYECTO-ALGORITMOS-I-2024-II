@@ -24,7 +24,7 @@ namespace GAMEJAMPROYECTO {
 			//TODO: Add the constructor code here
 			//
 			srand(time(NULL));
-			int coordenadaXInicio = 1050;
+			int coordenadaXInicio = 20;
 			segundosEsperaGanador = 0;
 			segundosEspera = 0;
 			carrera = new Carrera(coordenadaXInicio, 80, coordenadaXInicio, 240, coordenadaXInicio, 400);
@@ -46,6 +46,11 @@ namespace GAMEJAMPROYECTO {
 			{
 				delete components;
 			}
+
+			if (buffer != nullptr) {
+				delete buffer;
+			}
+
 			delete carrera;
 		}
 	private: System::Windows::Forms::Timer^ timer1;
@@ -259,7 +264,7 @@ namespace GAMEJAMPROYECTO {
 	}
 	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-		   System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e) {
 			   segundosEsperaGanador++;
 
 			   if (segundosEsperaGanador >= 1) {
@@ -312,6 +317,9 @@ namespace GAMEJAMPROYECTO {
 
 	private: System::Void btnSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
+		timer1->Enabled = false;
+		timer2->Enabled = false;
+		timer3->Enabled = false;
 	}
 };
 }

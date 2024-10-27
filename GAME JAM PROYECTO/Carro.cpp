@@ -4,6 +4,8 @@ Carro::Carro(int x, int y, int tipo) {
 	this->x = x;
 	this->y = y;
 	this->tipo = tipo;
+	this->colisionReciente = false;
+	this->colisionAnterior = false;
 	ancho = 100;
 	alto = 100;
 	puntos = 0;
@@ -23,7 +25,7 @@ void Carro::pararEjes() {
 	dy = 0;
 }
 void Carro::moverEjeX() {
-	x -= dx;
+	x += dx;
 	dy = 0;
 }
 void Carro::moverEjes() {
@@ -44,6 +46,12 @@ void Carro::cambiarDireccionEnLimites(int panelAncho, int panelAlto) {
 		dy *= -1;
 	}
 }
+
+void Carro::invertirDireccion() {
+	dx *= -1;
+	dy *= -1;
+}
+
 int Carro::getX() {
 	return this->x;
 }
@@ -85,4 +93,21 @@ Rectangle Carro::getRectangle() {
 
 void Carro::mostrar(Graphics^ panel) {
 
+}
+
+void Carro::marcarColision() {
+	colisionReciente = true;
+}
+void Carro::resetearColision() {
+	colisionReciente = false;
+}
+bool Carro::estaEnColision() {
+	return colisionReciente;
+}
+
+bool Carro::estabaEnColision() {
+	return colisionAnterior;
+}
+void Carro::actualizarEstadoDeColision() {
+	colisionAnterior = colisionReciente;
 }

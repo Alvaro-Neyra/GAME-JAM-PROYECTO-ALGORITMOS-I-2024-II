@@ -38,18 +38,28 @@ void Carro::generarDerivados() {
 	dy = (rand() % 11 + 5) * (rand() % 1 * 2 - 1);
 }
 void Carro::cambiarDireccionEnLimites(int panelAncho, int panelAlto) {
-	if (x < 0 || x + ancho > panelAncho) {
+	if (x < 0) {
+		x = 0;
+		dx *= -1;
+	}
+	else if (x + ancho > panelAncho) {
+		x = panelAncho - ancho;
 		dx *= -1;
 	}
 
-	if (y < 0 || y + alto > panelAlto) {
+	if (y < 0) {
+		y = 0;
+		dy *= -1;
+	}
+	else if (y + alto > panelAlto) {
+		y = panelAlto - alto;
 		dy *= -1;
 	}
 }
 
 void Carro::invertirDireccion() {
-	dx *= -1;
-	dy *= -1;
+	if (dx != 0) dx *= -1;
+	if (dy != 0) dy *= -1;
 }
 
 int Carro::getX() {

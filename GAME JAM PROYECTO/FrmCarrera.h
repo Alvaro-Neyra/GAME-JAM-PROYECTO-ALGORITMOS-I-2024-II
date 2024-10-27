@@ -302,13 +302,13 @@ namespace GAMEJAMPROYECTO {
 					   break;
 				   }
 				   }
-				   SolidBrush^ brocha = gcnew SolidBrush(colorCarroGanador);
+				   Pen^ brocha = gcnew Pen(colorCarroGanador);
 				   System::Drawing::SizeF ganadorSize = buffer->Graphics->MeasureString(ganadorText, font);
 				   System::Drawing::SizeF carroGanadorSize = buffer->Graphics->MeasureString(carroGanadorText, fontCarro);
 
 				   buffer->Graphics->DrawString(ganadorText, font, Brushes::Black, centerX - ganadorSize.Width / 2, centerY - ganadorSize.Height - 100);
 				   buffer->Graphics->DrawString(carroGanadorText, font, Brushes::Black, centerX - carroGanadorSize.Width / 2, centerY + ganadorSize.Height - 90);
-				   buffer->Graphics->FillEllipse(brocha, centerX - 50, centerY + 20, 100, 100);
+				   buffer->Graphics->DrawEllipse(brocha, centerX - 50, centerY + 20, 100, 100);
 				   buffer->Render(panel);
 
 				   timer3->Enabled = false;

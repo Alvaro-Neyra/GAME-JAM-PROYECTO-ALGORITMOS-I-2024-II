@@ -22,6 +22,8 @@ namespace GAMEJAMPROYECTO {
 			//
 			//TODO: Add the constructor code here
 			//
+			fondo = gcnew Bitmap("fondoInicio.jpg");
+			this->Paint += gcnew PaintEventHandler(this, &FrmInicio::FrmInicio_Paint);
 		}
 
 	protected:
@@ -39,18 +41,21 @@ namespace GAMEJAMPROYECTO {
 	protected:
 	private: System::Windows::Forms::Button^ btnIniciar;
 	private: System::Windows::Forms::Button^ btnSalir;
+	private: System::ComponentModel::IContainer^ components;
+
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		Bitmap^ fondo;
 		void InitializeComponent(void)
 		{
 			this->txtNamejuego = (gcnew System::Windows::Forms::Label());
@@ -106,6 +111,7 @@ namespace GAMEJAMPROYECTO {
 			this->Name = L"FrmInicio";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"FrmInicio";
+			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FrmInicio::FrmInicio_Paint);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -117,6 +123,11 @@ namespace GAMEJAMPROYECTO {
 	}
 	private: System::Void btnSalir_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
+	}
+	private: System::Void FrmInicio_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		if (fondo != nullptr) {
+			e->Graphics->DrawImage(fondo, 0, 0, this->ClientSize.Width, this->ClientSize.Height);
+		}
 	}
 };
 }

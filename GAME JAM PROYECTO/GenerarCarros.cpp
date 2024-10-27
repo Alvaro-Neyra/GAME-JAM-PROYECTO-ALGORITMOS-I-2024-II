@@ -1,9 +1,9 @@
 #include "GenerarCarros.h"
 
 GenerarCarros::GenerarCarros(int xCarro1, int yCarro1, int xCarro2, int yCarro2, int xCarro3, int yCarro3) {
-	carros.push_back(new Carro1(xCarro1, yCarro1, 1));
-	carros.push_back(new Carro2(xCarro2, yCarro2, 1));
-	carros.push_back(new Carro3(xCarro3, yCarro3, 1));
+	carros.push_back(new Carro1(xCarro1, yCarro1, 2));
+	carros.push_back(new Carro2(xCarro2, yCarro2, 2));
+	carros.push_back(new Carro3(xCarro3, yCarro3, 2));
     cantidadDeCarros = carros.size();
 }
 
@@ -39,15 +39,15 @@ void GenerarCarros::agregarCarros(int tipoCarro, Graphics^ panel) {
 
 	switch (tipoCarro) {
 		case 1: {
-			carros.push_back(new Carro1(x, y, 1));
+			carros.push_back(new Carro1(x, y, 2));
 			break;
 		}
 		case 2: {
-			carros.push_back(new Carro2(x, y, 1));
+			carros.push_back(new Carro2(x, y, 2));
 			break;
 		}
 		case 3: {
-			carros.push_back(new Carro3(x, y, 1));
+			carros.push_back(new Carro3(x, y, 2));
 			break;
 		}
 	}
@@ -59,35 +59,34 @@ void GenerarCarros::mostrarCarros(Graphics^ panel) {
 
     for (size_t i = 0; i < carros.size(); i++) {
         carros[i]->mostrar(panel);
-        if (cantidadDeCarros < 20) {
-            for (size_t j = 0; j < carros.size(); j++) {
-                if (j != i) {
-                    if (!carros[i]->estaEnColision() && !carros[j]->estaEnColision()) {
-
-                        if ((dynamic_cast<Carro3*>(carros[i]) && dynamic_cast<Carro2*>(carros[j])) ||
-                            (dynamic_cast<Carro2*>(carros[i]) && dynamic_cast<Carro3*>(carros[j]))) {
-                            if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) {
-                                carros[i]->marcarColision();
-                                carros[j]->marcarColision();
-                                indicesAEliminar.push_back(i);
-                                indicesAEliminar.push_back(j);
-                            }
+        for (size_t j = 0; j < carros.size(); j++) {
+            if (j != i) {
+                if (!carros[i]->estaEnColision() && !carros[j]->estaEnColision()) {
+                    if ((dynamic_cast<Carro3*>(carros[i]) && dynamic_cast<Carro2*>(carros[j])) ||
+                        (dynamic_cast<Carro2*>(carros[i]) && dynamic_cast<Carro3*>(carros[j]))) {
+                        if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) {
+                            carros[i]->marcarColision();
+                            carros[j]->marcarColision();
+                            indicesAEliminar.push_back(i);
+                            indicesAEliminar.push_back(j);
                         }
-                        else if ((dynamic_cast<Carro3*>(carros[i]) && dynamic_cast<Carro1*>(carros[j])) ||
-                            (dynamic_cast<Carro1*>(carros[i]) && dynamic_cast<Carro3*>(carros[j]))) {
-                            if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) {
-                                carros[i]->invertirDireccion();
-                                carros[j]->invertirDireccion();
-                                carros[i]->marcarColision();
-                                carros[j]->marcarColision();
-                            }
+                    }
+                    else if ((dynamic_cast<Carro3*>(carros[i]) && dynamic_cast<Carro1*>(carros[j])) ||
+                        (dynamic_cast<Carro1*>(carros[i]) && dynamic_cast<Carro3*>(carros[j]))) {
+                        if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) {
+                            carros[i]->invertirDireccion();
+                            carros[j]->invertirDireccion();
+                            carros[i]->marcarColision();
+                            carros[j]->marcarColision();
                         }
-                        else if ((dynamic_cast<Carro2*>(carros[i]) && dynamic_cast<Carro1*>(carros[j])) ||
-                            (dynamic_cast<Carro1*>(carros[i]) && dynamic_cast<Carro2*>(carros[j]))) {
-                            if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) {
-                                carros[i]->marcarColision();
-                                carros[j]->marcarColision();
+                    }
+                    else if ((dynamic_cast<Carro2*>(carros[i]) && dynamic_cast<Carro1*>(carros[j])) ||
+                        (dynamic_cast<Carro1*>(carros[i]) && dynamic_cast<Carro2*>(carros[j]))) {
+                        if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) {
+                            carros[i]->marcarColision();
+                            carros[j]->marcarColision();
 
+                            if (cantidadDeCarros < 20) {
                                 if (!carros[i]->estabaEnColision() && !carros[j]->estabaEnColision()) {
                                     agregarCarros(1, panel);
                                 }

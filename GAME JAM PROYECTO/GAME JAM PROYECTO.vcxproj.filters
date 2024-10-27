@@ -48,6 +48,9 @@
     <ClCompile Include="FrmInicio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cuadrilatero.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrmMain.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FrmInicio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cuadrilatero.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -125,6 +125,7 @@
     <ClCompile Include="Carro1.cpp" />
     <ClCompile Include="Carro2.cpp" />
     <ClCompile Include="Carro3.cpp" />
+    <ClCompile Include="Cuadrilatero.cpp" />
     <ClCompile Include="FrmCarrera.cpp" />
     <ClCompile Include="FrmGenerar.cpp" />
     <ClCompile Include="FrmInicio.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="Carro1.h" />
     <ClInclude Include="Carro2.h" />
     <ClInclude Include="Carro3.h" />
+    <ClInclude Include="Cuadrilatero.h" />
     <ClInclude Include="FrmCarrera.h">
       <FileType>CppForm</FileType>
     </ClInclude>
